@@ -6,11 +6,17 @@
     @csrf
     <label>
         Title
-        <input name="title" type="text">
+        <input name="title" type="text" value="{{ old('title')}}">
+        @error('title')
+          <small style="color:red">{{ $message }}</small>
+        @enderror
     </label><br/><br/>
     <label>
         Body
-        <textarea name="body"></textarea>
+        <textarea name="body">{{ old('body')}}</textarea>
+        @error('body')
+          <small style="color:red">{{ $message }}</small>
+        @enderror
     </label><br/><br/>
     <button type="submit">Enviar</button>
 </form>
