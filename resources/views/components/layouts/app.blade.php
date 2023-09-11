@@ -6,6 +6,13 @@
 <body>
     <p>Hola Mundo app Blade</p>
     @include('partials.navigation')
+
+    @if(session('status'))
+            <div>
+                {{ session('status')}}
+            </div>
+    @endif
+
     @yield('content')
 
 </body>

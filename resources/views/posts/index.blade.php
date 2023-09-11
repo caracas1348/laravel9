@@ -6,6 +6,14 @@
 @section('meta-description','Blog meta description')
 
 @section('content')
+
+@if(session('status'))
+   <div class="status">
+      {{ session('status')}}
+   </div>
+@endif
+
+
 <h1>Welcome Blog</h1>
 <a href="{{ route('posts.create');}}">Crear nuevo post</a>
 
