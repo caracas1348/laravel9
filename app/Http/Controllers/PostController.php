@@ -41,10 +41,14 @@ class PostController extends Controller
         return view('posts.create',['posts'=>$posts ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //$posts = Post::get();
-        return 'Store Process..';//view('posts.create',['posts'=>$posts ]);
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return to_route('posts.index');
     }
 }
 

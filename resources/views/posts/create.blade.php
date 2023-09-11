@@ -6,11 +6,11 @@
     @csrf
     <label>
         Title
-        <input type="text">
+        <input name="title" type="text">
     </label><br/><br/>
     <label>
         Body
-        <textarea></textarea>
+        <textarea name="body"></textarea>
     </label><br/><br/>
     <button type="submit">Enviar</button>
 </form>
