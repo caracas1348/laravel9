@@ -34,5 +34,17 @@ class PostController extends Controller
     {
         return view('posts.show',['post'=>$post]);
     }
+
+    public function create()
+    {
+        $posts = Post::get();
+        return view('posts.create',['posts'=>$posts ]);
+    }
+
+    public function store()
+    {
+        //$posts = Post::get();
+        return 'Store Process..';//view('posts.create',['posts'=>$posts ]);
+    }
 }
 
