@@ -20,11 +20,16 @@
 {{-- @dump($posts) --}}
 @foreach ($posts as $post)
     {{-- <h1>  {{ $post->title; }}  </h1> --}}
-   <h2>
-      <a href="{{ route('posts.show', $post->id);}}">
-            {{$post->title;}}
-      </a>
-   </h2> 
+   
+   <div style="display:flex; align-items:baseline; ">
+         <h2>
+            <a href="{{ route('posts.show', $post->id);}}">
+                  {{$post->title;}}
+            </a>
+         </h2> 
+
+         &nbsp;<a href="{{ route('posts.edit', $post)}}"> Edit </a>
+   </div>
 @endforeach
 @endsection
 

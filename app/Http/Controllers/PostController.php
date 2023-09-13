@@ -58,5 +58,26 @@ class PostController extends Controller
         session()->flash('status','Post created');
         return to_route('posts.index');
     }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit',['post'=>$post]);
+    }
+
+    public function update(Request $request,Post $post)
+    {
+        $request->validate([
+            'title'=>['required', 'min:4'],
+            'body'=>['required']
+
+
+        ]);
+        //$post = Post::find($post);//una forma de hacerlo
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+        session()->flash('status','Post updated!');
+        return to_route('posts.show',$post);
+    }
 }
 
