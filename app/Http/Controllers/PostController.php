@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\SavePostRequest;
 use Illuminate\Support\Facades\DB;
 /* use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -37,47 +38,39 @@ class PostController extends Controller
 
     public function create()
     {
-        $posts = Post::get();
-        return view('posts.create',['posts'=>$posts ]);
+        
+        $post = Post::get();
+        return view('posts.create',['post'=>New Post]);
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title'=>['required', 'min:4'],
-            'body'=>['required']
+public function store(SavePostRequest $request) {
+        /*
+        $validated = $request->validate([
+                    'title'=>['required', 'min:4'],
+                    'body'=>['required']
+                ]); */
 
-
-        ]);
-
-
-        $post = new Post;
+        /*$post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->save();
-        session()->flash('status','Post created');
-        return to_route('posts.index');
+        $post->save();*/
+        Post::create($request->validated());//$validated);
+        //session()->flash('status','Post created');//CAMBIADO POR ->with
+        return to_route('posts.index')->with('status','Post created!!');
     }
 
     public function edit(Post $post)
     {
         return view('posts.edit',['post'=>$post]);
+        //return 'mandando a editar';
     }
 
-    public function update(Request $request,Post $post)
+    public function update(SavePostRequest $request,Post $post)
     {
-        $request->validate([
-            'title'=>['required', 'min:4'],
-            'body'=>['required']
 
-
-        ]);
-        //$post = Post::find($post);//una forma de hacerlo
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->save();
-        session()->flash('status','Post updated!');
-        return to_route('posts.show',$post);
+        $post->update($request->validated());
+        //session()->flash('status','Post updated!');
+        return to_route('posts.show',$post)->with('status','Post updated!!!!');
     }
 }
 
