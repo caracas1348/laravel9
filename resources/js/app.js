@@ -1,3 +1,4 @@
-import './bootstrap';
+import './bootstrap'
+import '../css/app.scss'
 
-console.log('JS Loaded !');
+import * as boostrap from 'bootstrap'
