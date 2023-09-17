@@ -1,10 +1,12 @@
 <head>
     <title>@yield('title')</title>
-    <meta name="description" content="@yield('meta-description', 'Default meta description')"
+    <meta name="description" content="@yield('meta-description', 'Default meta description')">
+
+    
 </head>
 
 <body>
-    <p>Hola Mundo app Blade</p>
+    <p>Hola Mundo app Bladesss</p>
     @include('partials.navigation')
 
     @if(session('status'))
