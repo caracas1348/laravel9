@@ -43,7 +43,8 @@ class PostController extends Controller
         return view('posts.create',['post'=>New Post]);
     }
 
-public function store(SavePostRequest $request) {
+    public function store(SavePostRequest $request)
+    {
         /*
         $validated = $request->validate([
                     'title'=>['required', 'min:4'],
@@ -72,5 +73,13 @@ public function store(SavePostRequest $request) {
         //session()->flash('status','Post updated!');
         return to_route('posts.show',$post)->with('status','Post updated!!!!');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return to_route('posts.index',$post)->with('status','Post Deleted!!!!');
+    }
+
+
 }
 

@@ -29,6 +29,13 @@
          </h2> 
 
          &nbsp;<a href="{{ route('posts.edit', $post)}}"> Edit </a>
+         &nbsp;
+         <form action="{{ route('posts.destroy', $post)}}" method="POST">
+           @method('DELETE')
+           @csrf
+            <button type="submit">Delete</button>
+
+         </form>
    </div>
 @endforeach
 @endsection
